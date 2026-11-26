@@ -1,5 +1,7 @@
 package breakout.model;
 
+import breakout.Constants;
+
 public class Paddle {
 
     private double x;
@@ -12,6 +14,27 @@ public class Paddle {
         this.y = y;
         this.width = width;
         this.height = height;
+    }
+
+    public void moveLeft() {
+        x = x - Constants.PADDLE_SPEED;
+        keepInsideCanvas();
+    }
+
+    public void moveRight() {
+        x = x + Constants.PADDLE_SPEED;
+        keepInsideCanvas();
+    }
+
+    // clamp: keep paddle inside canvas
+    private void keepInsideCanvas() {
+        double maxX = Constants.CANVAS_WIDTH - width;
+        if (x < 0) {
+            x = 0;
+        }
+        if (x > maxX) {
+            x = maxX;
+        }
     }
 
     public double getX() {
