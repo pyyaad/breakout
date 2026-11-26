@@ -8,4 +8,7 @@ public class Constants {
     public static final int CANVAS_HEIGHT = 600;
 
     public static final Color BACKGROUND_COLOR = new Color(20, 20, 35);
+
+    // milliseconds between frames (about 60 frames per second)
+    public static final double FRAME_DELAY = 1000.0 / 60;
 }

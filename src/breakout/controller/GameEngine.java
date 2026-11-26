@@ -20,5 +20,14 @@ public class GameEngine extends GraphicsProgram {
     public void run() {
         // ACM adds its menu bar after init(), so the window is packed here to fit the canvas size
         SwingUtilities.getWindowAncestor(getGCanvas()).pack();
+
+        while (true) {
+            updateGame();
+            breakoutCanvas.render();
+            pause(Constants.FRAME_DELAY);
+        }
+    }
+
+    private void updateGame() {
     }
 }

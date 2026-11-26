@@ -11,4 +11,7 @@ public class BreakoutCanvas {
         this.canvas = canvas;
         canvas.setBackground(Constants.BACKGROUND_COLOR);
     }
+
+    public void render() {
+    }
 }
