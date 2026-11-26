@@ -9,6 +9,11 @@ public class Constants {
 
     public static final Color BACKGROUND_COLOR = new Color(20, 20, 35);
 
-    // milliseconds between frames (about 60 frames per second)
+    // 60 FPS: ms between frames
     public static final double FRAME_DELAY = 1000.0 / 60;
+
+    public static final int PADDLE_WIDTH = 100;
+    public static final int PADDLE_HEIGHT = 15;
+    public static final int PADDLE_Y = 545;
+    public static final Color PADDLE_COLOR = new Color(230, 230, 240);
 }
