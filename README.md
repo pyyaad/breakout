@@ -14,6 +14,8 @@ A Breakout game written in Java. This is phase 1 of the Advanced Programming cou
 From the repository root on Windows:
 
 ```
-javac --release 11 -cp lib/acm.jar -d out src/breakout/*.java src/breakout/model/*.java src/breakout/controller/*.java src/breakout/view/*.java
+javac --release 11 -cp lib/acm.jar -sourcepath src -d out src/breakout/Main.java
 java -cp "out;lib/acm.jar" breakout.Main
 ```
+
+On macOS/Linux, use `:` instead of `;` in the classpath.
