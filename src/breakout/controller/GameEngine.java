@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import acm.program.GraphicsProgram;
 import breakout.Constants;
 import breakout.model.Ball;
+import breakout.model.GameState;
 import breakout.model.Paddle;
 import breakout.view.BreakoutCanvas;
 
@@ -16,6 +17,7 @@ public class GameEngine extends GraphicsProgram {
     private BreakoutCanvas breakoutCanvas;
     private Paddle paddle;
     private Ball ball;
+    private GameState state = GameState.READY;
     private boolean leftPressed;
     private boolean rightPressed;
 
@@ -50,7 +52,17 @@ public class GameEngine extends GraphicsProgram {
         if (rightPressed) {
             paddle.moveRight();
         }
-        ball.placeOnPaddle(paddle);
+
+        if (state == GameState.READY) {
+            ball.placeOnPaddle(paddle);
+        }
+        if (state == GameState.RUNNING) {
+            ball.move();
+            ball.bounceOffWalls();
+            if (ball.isBelowCanvas()) {
+                state = GameState.READY;
+            }
+        }
     }
 
     public void keyPressed(KeyEvent e) {
@@ -59,6 +71,10 @@ public class GameEngine extends GraphicsProgram {
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             rightPressed = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE && state == GameState.READY) {
+            ball.launch();
+            state = GameState.RUNNING;
         }
     }
 

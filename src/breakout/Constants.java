@@ -20,4 +20,7 @@ public class Constants {
 
     public static final int BALL_RADIUS = 8;
     public static final Color BALL_COLOR = new Color(255, 200, 40);
+    // pixels per frame; negative dy means up
+    public static final int BALL_START_DX = 3;
+    public static final int BALL_START_DY = -5;
 }
