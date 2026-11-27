@@ -18,6 +18,7 @@ public class GameEngine extends GraphicsProgram {
     private Paddle paddle;
     private Ball ball;
     private GameState state = GameState.READY;
+    private int lives;
     private boolean leftPressed;
     private boolean rightPressed;
 
@@ -28,6 +29,7 @@ public class GameEngine extends GraphicsProgram {
         double paddleX = (Constants.CANVAS_WIDTH - Constants.PADDLE_WIDTH) / 2.0;
         paddle = new Paddle(paddleX, Constants.PADDLE_Y, Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT);
         ball = new Ball(Constants.BALL_RADIUS);
+        lives = Constants.START_LIVES;
 
         addKeyListeners();
     }
@@ -40,12 +42,16 @@ public class GameEngine extends GraphicsProgram {
 
         while (true) {
             updateGame();
-            breakoutCanvas.render(paddle, ball);
+            breakoutCanvas.render(paddle, ball, lives);
             pause(Constants.FRAME_DELAY);
         }
     }
 
     private void updateGame() {
+        if (state == GameState.GAME_OVER) {
+            return;
+        }
+
         if (leftPressed) {
             paddle.moveLeft();
         }
@@ -64,7 +70,12 @@ public class GameEngine extends GraphicsProgram {
                 ball.bounceOffPaddle(paddle);
             }
             if (ball.isBelowCanvas()) {
-                state = GameState.READY;
+                lives = lives - 1;
+                if (lives == 0) {
+                    state = GameState.GAME_OVER;
+                } else {
+                    state = GameState.READY;
+                }
             }
         }
     }

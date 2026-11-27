@@ -24,4 +24,12 @@ public class Constants {
     public static final int BALL_START_DX = 3;
     public static final int BALL_START_DY = -5;
     public static final int MAX_BOUNCE_ANGLE = 60;
+
+    public static final int START_LIVES = 3;
+
+    public static final int HUD_HEIGHT = 35;
+    public static final Color HUD_COLOR = new Color(40, 40, 60);
+    public static final Color HUD_TEXT_COLOR = new Color(230, 230, 240);
+    public static final String HUD_FONT = "SansSerif-18";
+    public static final int HUD_TEXT_MARGIN = 15;
 }

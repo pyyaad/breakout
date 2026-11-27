@@ -40,8 +40,8 @@ public class Ball {
             x = Constants.CANVAS_WIDTH - 2 * radius;
             dx = -dx;
         }
-        if (y < 0) {
-            y = 0;
+        if (y < Constants.HUD_HEIGHT) {
+            y = Constants.HUD_HEIGHT;
             dy = -dy;
         }
     }
