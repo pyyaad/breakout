@@ -23,4 +23,5 @@ public class Constants {
     // pixels per frame; negative dy means up
     public static final int BALL_START_DX = 3;
     public static final int BALL_START_DY = -5;
+    public static final int MAX_BOUNCE_ANGLE = 60;
 }

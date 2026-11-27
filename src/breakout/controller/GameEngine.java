@@ -59,6 +59,10 @@ public class GameEngine extends GraphicsProgram {
         if (state == GameState.RUNNING) {
             ball.move();
             ball.bounceOffWalls();
+            // only a falling ball bounces, so it can't stick inside the paddle
+            if (ball.getDy() > 0 && ball.isTouching(paddle)) {
+                ball.bounceOffPaddle(paddle);
+            }
             if (ball.isBelowCanvas()) {
                 state = GameState.READY;
             }
