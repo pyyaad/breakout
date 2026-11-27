@@ -7,6 +7,7 @@ import javax.swing.SwingUtilities;
 
 import acm.program.GraphicsProgram;
 import breakout.Constants;
+import breakout.model.Ball;
 import breakout.model.Paddle;
 import breakout.view.BreakoutCanvas;
 
@@ -14,6 +15,7 @@ public class GameEngine extends GraphicsProgram {
 
     private BreakoutCanvas breakoutCanvas;
     private Paddle paddle;
+    private Ball ball;
     private boolean leftPressed;
     private boolean rightPressed;
 
@@ -23,6 +25,7 @@ public class GameEngine extends GraphicsProgram {
 
         double paddleX = (Constants.CANVAS_WIDTH - Constants.PADDLE_WIDTH) / 2.0;
         paddle = new Paddle(paddleX, Constants.PADDLE_Y, Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT);
+        ball = new Ball(Constants.BALL_RADIUS);
 
         addKeyListeners();
     }
@@ -35,7 +38,7 @@ public class GameEngine extends GraphicsProgram {
 
         while (true) {
             updateGame();
-            breakoutCanvas.render(paddle);
+            breakoutCanvas.render(paddle, ball);
             pause(Constants.FRAME_DELAY);
         }
     }
@@ -47,6 +50,7 @@ public class GameEngine extends GraphicsProgram {
         if (rightPressed) {
             paddle.moveRight();
         }
+        ball.placeOnPaddle(paddle);
     }
 
     public void keyPressed(KeyEvent e) {

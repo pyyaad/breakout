@@ -17,4 +17,7 @@ public class Constants {
     public static final int PADDLE_Y = 545;
     public static final Color PADDLE_COLOR = new Color(230, 230, 240);
     public static final int PADDLE_SPEED = 8;
+
+    public static final int BALL_RADIUS = 8;
+    public static final Color BALL_COLOR = new Color(255, 200, 40);
 }
